@@ -1,0 +1,4 @@
+Program('moon', Glob('*.c') + Glob('pbc/*.c'),
+			LIBS=['erl_interface', 'ei', 'luajit-5.1','gc'],
+			LIBPATH='/usr/local/lib/erlang/lib/erl_interface-3.7.8/lib/:/usr/local/lib/:/usr/lib/',
+			CPPPATH='/usr/local/lib/erlang/lib/erl_interface-3.7.8/include/:/usr/include/:/usr/local/include/:/usr/local/lib/erlang/usr/include/')
