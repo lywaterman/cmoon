@@ -8,6 +8,10 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
+// list
+
+#include "fifolist.h"
+
 //
 #define CommonHeader int type
 
@@ -36,6 +40,22 @@ int main() {
 
 	GC_INIT();
 
+	FiFoList * list = (FiFoList *) GC_MALLOC(sizeof(FiFoList));
+
+	FiFoListNode * node = (FiFoListNode *)GC_MALLOC(sizeof(FiFoList)); 	
+
+	int j = 12345;
+	node->data = &j;
+
+	fifo_list_push(list, node);
+
+	//pop
+	FiFoListNode * pop_node = fifo_list_pop(list);
+
+	printf("pop_node value %d\n", *((int *)pop_node->data));
+	
+	return 0;
+
 	lua_State *lstate = luaL_newstate();
 
 	luaL_openlibs(lstate);
@@ -51,7 +71,9 @@ int main() {
 //	}
 //
 //	return 0;
-//
+	
+		
+
 	int result = load_lua_file(lstate, "test.lua");	
 
 	assert(result == 0);

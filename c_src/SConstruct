@@ -1,4 +1,9 @@
-Program('moon', Glob('*.c') + Glob('pbc/*.c'),
+Program('moon', ['main.c', 'fifolist.c'] + Glob('pbc/*.c'),
 			LIBS=['erl_interface', 'ei', 'luajit-5.1','gc'],
-			LIBPATH='/usr/local/lib/erlang/lib/erl_interface-3.7.8/lib/:/usr/local/lib/:/usr/lib/',
+			LIBPATH='/usr/local/lib/erlang/lib/erl_interface-3.7.8/lib/:/usr/local/lib/:/usr/lib/:/usr/local/lib/erlang/usr/lib/',
 			CPPPATH='/usr/local/lib/erlang/lib/erl_interface-3.7.8/include/:/usr/include/:/usr/local/include/:/usr/local/lib/erlang/usr/include/')
+
+##SharedLibrary('cmoon', Glob('cmoon.c') + Glob('pbc/*.c'),
+##			LIBS=['erl_interface', 'ei', 'luajit-5.1','gc'],
+##			LIBPATH='/usr/local/lib/erlang/lib/erl_interface-3.7.8/lib/:/usr/local/lib/:/usr/lib/:/usr/local/lib/erlang/usr/lib/',
+##			CPPPATH='/usr/local/lib/erlang/lib/erl_interface-3.7.8/include/:/usr/include/:/usr/local/include/:/usr/local/lib/erlang/usr/include/')
